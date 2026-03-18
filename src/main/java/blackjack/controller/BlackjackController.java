@@ -22,23 +22,26 @@ public class BlackjackController {
     private final InputView inputView;
     private final OutputView outputView;
     private final BlackjackService blackjackService;
+    private final PickStrategy pickStrategy;
 
     public BlackjackController(
             InputView inputView,
             OutputView outputView,
-            BlackjackService blackjackService
+            BlackjackService blackjackService,
+            PickStrategy pickStrategy
     ) {
-        validate(inputView, outputView, blackjackService);
-
+        validate(inputView, outputView, blackjackService, pickStrategy);
         this.inputView = inputView;
         this.outputView = outputView;
         this.blackjackService = blackjackService;
+        this.pickStrategy = pickStrategy;
     }
 
     private void validate(
             InputView inputView,
             OutputView outputView,
-            BlackjackService blackjackService
+            BlackjackService blackjackService,
+            PickStrategy pickStrategy
     ) {
         if (inputView == null) {
             throw new IllegalArgumentException("inputView가 null입니다.");
@@ -50,6 +53,10 @@ public class BlackjackController {
 
         if (blackjackService == null) {
             throw new IllegalArgumentException("blackjackService가 null입니다.");
+        }
+
+        if (pickStrategy == null) {
+            throw new IllegalArgumentException("pickStrategy가 null입니다.");
         }
     }
 
