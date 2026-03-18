@@ -24,7 +24,7 @@ public abstract class Participant {
         }
         String blank = " ";
 
-        if (name.startsWith(blank) || name.endsWith(blank)) {
+        if (!name.equals(name.trim())) {
             throw new IllegalArgumentException("이름이 공백으로 시작하거나 끝납니다.");
         }
 
